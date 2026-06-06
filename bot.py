@@ -148,7 +148,6 @@ while True:
         df = indicators(df)
 
         sig = signal(df)
-        tr = trend(df)
         price = df.iloc[-1]["close"]
 
         print("Signal:", sig, "| Trend:", tr)
