@@ -150,7 +150,7 @@ while True:
         sig = signal(df)
         price = df.iloc[-1]["close"]
 
-        print("Signal:", sig, "| Trend:",
+        print("Signal:", sig, "| Trend:")
 
         if sig == "buy" and tr == "up":
             place_order("Buy", price)
