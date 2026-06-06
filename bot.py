@@ -75,23 +75,7 @@ def indicators(df):
     high14 = df["high"].rolling(14).max()
     df["stoch"] = 100 * (df["close"] - low14) / (high14 - low14)
 
-    # EMA trend
-    df["ema50"] = df["close"].ewm(span=50).mean()
-    df["ema200"] = df["close"].ewm(span=200).mean()
-
     return df
-
-# =========================
-# TREND FILTER
-# =========================
-def trend(df):
-    last = df.iloc[-1]
-
-    if last["ema50"] > last["ema200"]:
-        return "up"
-    elif last["ema50"] < last["ema200"]:
-        return "down"
-    return "flat"
 
 # =========================
 # SIGNAL LOGIC (YOUR RULES)
