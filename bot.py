@@ -42,11 +42,11 @@ def send_msg(text):
 
 send_msg("🚀 Auto Trading Bot ONLINE")
 
-        if msg == "stop":
+     if msg == "stop":
              running = False
-        if msg == "start":
+     if msg == "start":
              running = True
-        if not running:
+     if not running:
                  continue
             
             def get_balance():
