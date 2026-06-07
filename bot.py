@@ -152,10 +152,10 @@ while True:
 
         print("Signal:", sig, "| Trend:")
 
-        if sig == "buy" and tr == "up":
+if sig == "buy" and tr == "up":
             place_order("Buy", price)
 
-        elif sig == "sell" and tr == "down":
+    elif sig == "sell" and tr == "down":
             place_order("Sell", price)
 
            df = get_data()
