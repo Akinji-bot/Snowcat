@@ -27,7 +27,7 @@ session = HTTP(
     api_secret=API_SECRET
 )
 
-symbol = "XAUUSDT" or "BTCUSDT" # IMPORTANT: most stable Bybit format
+symbol = "BTCUSDT" or "BTC/USDT" # IMPORTANT: most stable Bybit format
 running = True
 
 # =========================
