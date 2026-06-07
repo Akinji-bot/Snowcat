@@ -33,6 +33,15 @@ running = True
 # =========================
 # TELEGRAM
 # =========================
+def send_msg(text):
+    try:
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+        requests.post(url, data={"chat_id": CHAT_ID, "text": text})
+    except Exception as e:
+        print("Telegram error:", e)
+
+send_msg("🚀 Auto Trading Bot ONLINE")
+
 def check_commands():
     global running, last_update_id
 
@@ -48,7 +57,6 @@ def check_commands():
 
             last_update_id = update_id
 
- def send_mesg():
             msg = update["message"]["text"].lower()
 
             # STOP
@@ -72,9 +80,6 @@ def check_commands():
 
     except Exception as e:
         print("CMD ERROR:", e)
-
-
-send_msg("🚀 Auto Trading Bot ONLINE")
 
             
 # =========================
