@@ -71,10 +71,10 @@ def check_commands():
 
             update_id = update.get("update_id")
 
-            if update_id is None or update_id <= last_update_id:
-                continue
+            if update_id < last_update_id:
+                         continue
 
-            last_update_id = update_id
+            last_update_id = update_id + 1
 
             # ✅ SAFE MESSAGE ACCESS
             message = update.get("message", {})
@@ -85,7 +85,7 @@ def check_commands():
             if not msg:
                 continue
 
-            msg = msg.strip().lower()
+            msg = message.get("text", "").strip().lower().replace("/", "")
 
             print("COMMAND RECEIVED:", msg)
 
