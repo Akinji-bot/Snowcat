@@ -158,12 +158,21 @@ while True:
         elif sig == "sell" and tr == "down":
             place_order("Sell", price)
 
-        print(
+           df = get_data()
+df = indicators(df)
+
+last = df.iloc[-1]
+
+print(
     f"Close={last['close']}, "
     f"Stoch={last['stoch']:.2f}, "
     f"Lower={last['lower']:.2f}, "
     f"Upper={last['upper']:.2f}"
 )
+
+sig = signal(df)
+
+print("Signal:", sig)
 
         time.sleep(300)
 
