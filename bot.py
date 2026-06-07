@@ -157,14 +157,6 @@ while True:
 
         elif sig == "sell":
             place_order("Sell", price)
-        
-
-        print(
-            f"Close={last['close']}, "
-            f"Stoch={last['stoch']:.2f}, "
-            f"Lower={last['lower']:.2f}, "
-            f"Upper={last['upper']:.2f}"
-)
                       
 
         time.sleep(300)
