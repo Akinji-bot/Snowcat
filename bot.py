@@ -147,6 +147,15 @@ while True:
         df = get_data()
         df = indicators(df)
 
+        last = df.iloc[-1]
+
+    print(
+        f"Close={last['close']}, "
+        f"Stoch={last['stoch']:.2f}, "
+        f"Lower={last['lower']:.2f}, "
+        f"Upper={last['upper']:.2f}"
+)
+
         sig = signal(df)
         price = df.iloc[-1]["close"]
 
@@ -164,10 +173,3 @@ while True:
     except Exception as e:
         print("MAIN ERROR:", e)
         time.sleep(10)
-        
-print(
-    f"Close={last['close']}, "
-    f"Stoch={last['stoch']:.2f}, "
-    f"Lower={last['lower']:.2f}, "
-    f"Upper={last['upper']:.2f}"
-)
