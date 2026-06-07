@@ -185,40 +185,42 @@ def place_order(side, price):
 while True:
     try:
         check_commands()
-        
+
+        if not running:
+            time.sleep(5)
+            continue
+
         df = get_data()
         df = indicators(df)
 
-        msg = update["message"]["text"].strip().lower()
-print("COMMAND RECEIVED:", msg)
+        ticker = session.get_tickers(
+            category="linear",
+            symbol="BTCUSDT"
+        )
 
-        ticker = session.get_tickers(category="linear", symbol="BTCUSDT")
         live_price = ticker["result"]["list"][0]["lastPrice"]
-
         print("LIVE BTC PRICE:", live_price)
 
         sig = signal(df)
-        
+
         last = df.iloc[-1]
 
         print(
-        f"Close={last['close']}, "
-        f"Stoch={last['stoch']:.2f}, "
-        f"Lower={last['lower']:.2f}, "
-        f"Upper={last['upper']:.2f}"
-)
-
-        sig = signal(df)
-        price = df.iloc[-1]["close"]
+            f"Close={last['close']}, "
+            f"Stoch={last['stoch']:.2f}, "
+            f"Lower={last['lower']:.2f}, "
+            f"Upper={last['upper']:.2f}"
+        )
 
         print("Signal:", sig)
+
+        price = df.iloc[-1]["close"]
 
         if sig == "buy":
             place_order("Buy", price)
 
         elif sig == "sell":
             place_order("Sell", price)
-                      
 
         time.sleep(300)
 
