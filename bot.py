@@ -72,22 +72,29 @@ def check_commands():
             update_id = update.get("update_id")
 
             if update_id <= last_update_id:
-                          continue
+                continue
 
             last_update_id = update_id
 
-            # ✅ SAFE MESSAGE ACCESS
             message = update.get("message", {})
             msg = message.get("text", "")
-            
-            print("DEBUG MSG:", msg)
 
             if not msg:
                 continue
 
-            msg = message.get("text", "").strip().lower().replace("/", "")
+            msg = msg.strip().lower().replace("/", "")
 
             print("COMMAND RECEIVED:", msg)
+
+            if msg == "start":
+                running = True
+
+            elif msg == "stop":
+                running = False
+
+            elif msg == "balance":
+                bal = get_balance()
+                print("BAL REQUESTED")
 
             # STOP
             if msg == "stop":
