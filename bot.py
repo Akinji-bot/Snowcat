@@ -158,6 +158,13 @@ while True:
         elif sig == "sell" and tr == "down":
             place_order("Sell", price)
 
+        print(
+    f"Close={last['close']}, "
+    f"Stoch={last['stoch']:.2f}, "
+    f"Lower={last['lower']:.2f}, "
+    f"Upper={last['upper']:.2f}"
+)
+
         time.sleep(300)
 
     except Exception as e:
