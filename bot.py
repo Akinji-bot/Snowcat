@@ -184,6 +184,7 @@ def place_order(side, price):
 # =========================
 while True:
     try:
+        check_commands()
         df = get_data()
         df = indicators(df)
 
