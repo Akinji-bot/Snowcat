@@ -159,8 +159,6 @@ while True:
             place_order("Sell", price)
         
 
-           last = df.iloc[-1]
-
 print(
     f"Close={last['close']}, "
     f"Stoch={last['stoch']:.2f}, "
