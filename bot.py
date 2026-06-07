@@ -185,8 +185,12 @@ def place_order(side, price):
 while True:
     try:
         check_commands()
+        
         df = get_data()
         df = indicators(df)
+
+        msg = update["message"]["text"].strip().lower()
+print("COMMAND RECEIVED:", msg)
 
         ticker = session.get_tickers(category="linear", symbol="BTCUSDT")
         live_price = ticker["result"]["list"][0]["lastPrice"]
