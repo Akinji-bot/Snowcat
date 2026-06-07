@@ -165,8 +165,7 @@ while True:
             f"Lower={last['lower']:.2f}, "
             f"Upper={last['upper']:.2f}"
 )
-
-            sig = signal(df)
+                      sig = signal(df)
 
     print("Signal:", sig)
 
