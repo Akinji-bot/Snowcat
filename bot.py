@@ -89,13 +89,13 @@ def signal(df):
 
     buy = (
         last["close"] > mid_lower and
-        prev["stoch"] < 10 and
+        prev["stoch"] < 30 and
         last["stoch"] > prev["stoch"]
     )
 
     sell = (
         last["close"] < mid_upper and
-        prev["stoch"] > 90 and
+        prev["stoch"] > 70 and
         last["stoch"] < prev["stoch"]
     )
 
