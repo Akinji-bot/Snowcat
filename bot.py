@@ -48,6 +48,7 @@ def check_commands():
 
             last_update_id = update_id
 
+ def send_mesg():
             msg = update["message"]["text"].lower()
 
             # STOP
