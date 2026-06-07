@@ -32,6 +32,20 @@ running = True
 
 last_update_id = 0
 
+def get_balance():
+    try:
+        balance = session.get_wallet_balance(category="linear")
+
+        print("BAL RAW:", balance)
+
+        usdt = balance["result"]["list"][0]["totalEquity"]
+
+        return float(usdt)
+
+    except Exception as e:
+        print("BAL ERROR:", e)
+        return None
+
 # =========================
 # TELEGRAM
 # =========================
@@ -65,6 +79,8 @@ def check_commands():
             # ✅ SAFE MESSAGE ACCESS
             message = update.get("message", {})
             msg = message.get("text", "")
+            
+            print("DEBUG MSG:", msg)
 
             if not msg:
                 continue
