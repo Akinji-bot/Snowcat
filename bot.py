@@ -42,6 +42,25 @@ def send_msg(text):
 
 send_msg("🚀 Auto Trading Bot ONLINE")
 
+        if msg == "stop":
+             running = False
+        if msg == "start":
+             running = True
+        if not running:
+                 continue
+            
+            def get_balance():
+    try:
+        balance = session.get_wallet_balance(accountType="UNIFIED")
+
+        usdt = balance["result"]["list"][0]["totalEquity"]
+
+        return float(usdt)
+
+    except Exception as e:
+        print("BAL ERROR:", e)
+        return None
+            
 # =========================
 # MARKET DATA
 # =========================
