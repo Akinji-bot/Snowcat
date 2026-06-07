@@ -150,16 +150,14 @@ while True:
         sig = signal(df)
         price = df.iloc[-1]["close"]
 
-        print("Signal:", sig, "| Trend:")
+        print("Signal:", sig)
 
-if sig == "buy" and tr == "up":
+        if sig == "buy":
             place_order("Buy", price)
 
-    elif sig == "sell" and tr == "down":
+        elif sig == "sell":
             place_order("Sell", price)
-
-           df = get_data()
-           df = indicators(df)
+        
 
            last = df.iloc[-1]
 
