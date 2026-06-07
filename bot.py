@@ -159,9 +159,9 @@ while True:
             place_order("Sell", price)
 
            df = get_data()
-df = indicators(df)
+           df = indicators(df)
 
-last = df.iloc[-1]
+           last = df.iloc[-1]
 
 print(
     f"Close={last['close']}, "
@@ -170,7 +170,7 @@ print(
     f"Upper={last['upper']:.2f}"
 )
 
-sig = signal(df)
+         sig = signal(df)
 
 print("Signal:", sig)
 
