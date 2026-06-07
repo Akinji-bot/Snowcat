@@ -40,7 +40,9 @@ def send_msg(text):
     except Exception as e:
         print("Telegram error:", e)
 
+
 send_msg("🚀 Auto Trading Bot ONLINE")
+
 
 def check_commands():
     global running, last_update_id
@@ -50,14 +52,24 @@ def check_commands():
         res = requests.get(url).json()
 
         for update in res.get("result", []):
-            update_id = update["update_id"]
 
-            if update_id <= last_update_id:
+            update_id = update.get("update_id")
+
+            if update_id is None or update_id <= last_update_id:
                 continue
 
             last_update_id = update_id
 
-            msg = update["message"]["text"].lower()
+            # ✅ SAFE MESSAGE ACCESS
+            message = update.get("message", {})
+            msg = message.get("text", "")
+
+            if not msg:
+                continue
+
+            msg = msg.strip().lower()
+
+            print("COMMAND RECEIVED:", msg)
 
             # STOP
             if msg == "stop":
@@ -76,12 +88,11 @@ def check_commands():
                 if bal is not None:
                     send_msg(f"💰 Balance: {bal} USDT")
                 else:
-                    send_msg("❌ Empty balance")
+                    send_msg("❌ Could not fetch balance")
 
     except Exception as e:
         print("CMD ERROR:", e)
 
-            
 # =========================
 # MARKET DATA
 # =========================
