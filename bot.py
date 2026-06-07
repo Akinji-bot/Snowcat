@@ -167,8 +167,6 @@ while True:
 )
                       
 
-    print("Signal:", sig)
-
         time.sleep(300)
 
     except Exception as e:
