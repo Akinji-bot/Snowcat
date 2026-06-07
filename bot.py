@@ -27,7 +27,7 @@ session = HTTP(
     api_secret=API_SECRET
 )
 
-symbol = "BTCUSDT" or "BTC/USDT" # IMPORTANT: most stable Bybit format
+symbol = "BTCUSDT" # IMPORTANT: most stable Bybit format
 running = True
 
 # =========================
@@ -187,6 +187,13 @@ while True:
         df = get_data()
         df = indicators(df)
 
+        ticker = session.get_tickers(category="linear", symbol="BTCUSDT")
+        live_price = ticker["result"]["list"][0]["lastPrice"]
+
+        print("LIVE BTC PRICE:", live_price)
+
+        sig = signal(df)
+        
         last = df.iloc[-1]
 
         print(
