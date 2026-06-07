@@ -30,6 +30,8 @@ session = HTTP(
 symbol = "BTCUSDT" # IMPORTANT: most stable Bybit format
 running = True
 
+last_update_id = 0
+
 # =========================
 # TELEGRAM
 # =========================
