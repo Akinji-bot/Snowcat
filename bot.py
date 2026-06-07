@@ -33,35 +33,45 @@ running = True
 # =========================
 # TELEGRAM
 # =========================
-def send_msg(text):
+def check_commands():
+    global running, last_update_id
+
     try:
-        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-        requests.post(url, data={"chat_id": CHAT_ID, "text": text})
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates"
+        res = requests.get(url).json()
+
+        for update in res.get("result", []):
+            update_id = update["update_id"]
+
+            if update_id <= last_update_id:
+                continue
+
+            last_update_id = update_id
+
+            msg = update["message"]["text"].lower()
+
+            # STOP
+            if msg == "stop":
+                running = False
+                send_msg("⛔ Bot STOPPED")
+
+            # START
+            elif msg == "start":
+                running = True
+                send_msg("✅ Bot STARTED")
+
+            # BALANCE
+            elif msg == "balance":
+                bal = get_balance()
+
+                if bal is not None:
+                    send_msg(f"💰 Balance: {bal} USDT")
+                else:
+                    send_msg("❌ Empty balance")
+
     except Exception as e:
-        print("Telegram error:", e)
+        print("CMD ERROR:", e)
 
-def get_balance():
-    try:
-        balance = session.get_wallet_balance(accountType="UNIFIED")
-
-        usdt = balance["result"]["list"][0]["totalEquity"]
-
-        return float(usdt)
-
-    except Exception as e:
-        print("BAL ERROR:", e)
-        return None
-        
-        elif msg == "balance":
-        bal = get_balance()
-
-     if bal is not None:
-        send_msg(f"💰 Balance: {bal} USDT")
-    else:
-        send_msg("❌ empty balance")
-        
-     if msg == "stop":
-            running = False
 
 send_msg("🚀 Auto Trading Bot ONLINE")
 
