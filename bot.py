@@ -166,9 +166,9 @@ while True:
             f"Upper={last['upper']:.2f}"
 )
 
-         sig = signal(df)
+            sig = signal(df)
 
-print("Signal:", sig)
+    print("Signal:", sig)
 
         time.sleep(300)
 
