@@ -71,10 +71,10 @@ def check_commands():
 
             update_id = update.get("update_id")
 
-           if update_id <= last_update_id:
+            if update_id <= last_update_id:
                           continue
 
-           last_update_id = update_id
+            last_update_id = update_id
 
             # ✅ SAFE MESSAGE ACCESS
             message = update.get("message", {})
