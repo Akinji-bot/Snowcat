@@ -2,7 +2,8 @@ import os
 import time
 import requests
 import pandas as pd
-from bybit.unified_trading import HTTP
+from pybit.unified_trading import HTTP
+     session = HTTP(testnet=True)
 
 print("🚀 Auto Trading Bot Starting...")
 
