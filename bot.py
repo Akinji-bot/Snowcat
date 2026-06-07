@@ -40,8 +40,7 @@ def send_msg(text):
     except Exception as e:
         print("Telegram error:", e)
 
-
-      def get_balance():
+def get_balance():
     try:
         balance = session.get_wallet_balance(accountType="UNIFIED")
 
@@ -61,9 +60,8 @@ def send_msg(text):
     else:
         send_msg("❌ empty balance")
         
-    if 
-      msg == "stop":
-               running = False
+    if msg == "stop":
+            running = False
 
 send_msg("🚀 Auto Trading Bot ONLINE")
 
