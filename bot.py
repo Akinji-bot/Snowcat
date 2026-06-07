@@ -232,6 +232,11 @@ while True:
 
         sig = signal(df)
 
+trend = "up" if df["close"].iloc[-1] > df["close"].rolling(50).mean().iloc[-1] else "down"
+volatility = df["close"].pct_change().std()
+
+print(f"Trend: {trend} | Volatility: {volatility}")
+
         last = df.iloc[-1]
 
         print(
@@ -245,11 +250,13 @@ while True:
 
         price = df.iloc[-1]["close"]
 
-        if sig == "buy":
+        if sig == "buy" and trend == "up" and volatility < 0.02:
+    place_order("Buy", price)
+
+elif sig == "sell" and trend == "down" and volatility < 0.02:
+    place_order("Sell", price)
             place_order("Buy", price)
 
-        elif sig == "sell":
-            place_order("Sell", price)
 
         time.sleep(300)
 
