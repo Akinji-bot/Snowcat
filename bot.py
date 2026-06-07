@@ -2,7 +2,7 @@ import os
 import time
 import requests
 import pandas as pd
-from pybit.demo_account import HTTP
+from pybit.Demo_Trading import HTTP
 
 print("🚀 Auto Trading Bot Starting...")
 
