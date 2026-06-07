@@ -149,7 +149,7 @@ while True:
 
         last = df.iloc[-1]
 
-    print(
+        print(
         f"Close={last['close']}, "
         f"Stoch={last['stoch']:.2f}, "
         f"Lower={last['lower']:.2f}, "
