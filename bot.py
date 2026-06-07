@@ -52,15 +52,15 @@ def get_balance():
         print("BAL ERROR:", e)
         return None
         
-  elif msg == "balance":
-    bal = get_balance()
+        elif msg == "balance":
+        bal = get_balance()
 
-    if bal is not None:
+     if bal is not None:
         send_msg(f"💰 Balance: {bal} USDT")
     else:
         send_msg("❌ empty balance")
         
-    if msg == "stop":
+     if msg == "stop":
             running = False
 
 send_msg("🚀 Auto Trading Bot ONLINE")
