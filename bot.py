@@ -96,20 +96,6 @@ def check_commands():
                 bal = get_balance()
                 print("BAL REQUESTED")
 
-            # STOP
-            if msg == "stop":
-                running = False
-                send_msg("⛔ Bot STOPPED")
-
-            # START
-            elif msg == "start":
-                running = True
-                send_msg("✅ Bot STARTED")
-
-            # BALANCE
-            elif msg == "balance":
-                bal = get_balance()
-
                 if bal is not None:
                     send_msg(f"💰 Balance: {bal} USDT")
                 else:
