@@ -10,8 +10,8 @@ print("🚀 Auto Trading Bot Starting...")
 # =========================
 # ENV VARIABLES (RAILWAY)
 # =========================
-API_KEY = os.getenv("API_KEY")
-API_SECRET = os.getenv("API_SECRET")
+API_KEY = "7r8xzovf1mNzexIeCR"
+API_SECRET = "P97EUyn2y60PxVZ28FNdd8lqMsPQhnThvVsC"
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
@@ -23,7 +23,7 @@ if not all([API_KEY, API_SECRET, BOT_TOKEN, CHAT_ID]):
 # BYBIT CONNECTION
 # =========================
 session = HTTP(
-    testnet=True,
+    testnet=False,
     api_key=API_KEY,
     api_secret=API_SECRET
 )
