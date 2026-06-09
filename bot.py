@@ -3,7 +3,7 @@ import time
 import requests
 import pandas as pd
 from pybit.unified_trading import HTTP
-session = HTTP(testnet=False)
+session = HTTP(testnet=True)
 
 print("🚀 Auto Trading Bot Starting...")
 
@@ -23,7 +23,7 @@ if not all([API_KEY, API_SECRET, BOT_TOKEN, CHAT_ID]):
 # BYBIT CONNECTION
 # =========================
 session = HTTP(
-    testnet=False,
+    testnet=True,
     api_key=API_KEY,
     api_secret=API_SECRET
 )
