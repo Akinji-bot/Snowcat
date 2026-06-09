@@ -10,8 +10,8 @@ print("🚀 Auto Trading Bot Starting...")
 # =========================
 # ENV VARIABLES (RAILWAY)
 # =========================
-API_KEY = "7r8xzovf1mNzexIeCR"
-API_SECRET = "P97EUyn2y60PxVZ28FNdd8lqMsPQhnThvVsC"
+API_KEY = 7r8xzovf1mNzexIeCR
+API_SECRET = P97EUyn2y60PxVZ28FNdd8lqMsPQhnThvVsC
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
